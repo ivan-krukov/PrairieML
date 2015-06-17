@@ -459,6 +459,9 @@ summary(model3)</code></pre>
   ssTot &lt;- sum((respondingVariable - mean(respondingVariable))^2)
   return (1 - (ssRes/ssTot))
 }</code></pre>
+<p>Now we can use the newly minted function to determine how well our model does on the test data:</p>
+<pre class="r"><code>predictedCoefficientOfDetermination(modelAIC, climateTest, climateTest$Temp)</code></pre>
+<pre><code>## [1] 0.282211</code></pre>
 </div>
 
 
