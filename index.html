@@ -453,14 +453,14 @@ summary(model3)</code></pre>
 <p>Now that we have derived a model, we can try to predict the values in the test dataset.</p>
 <pre class="r"><code>prediction &lt;- predict(modelAIC, climateTest)</code></pre>
 <p>Let us write a function that calculates <span class="math">\(R^2\)</span> for the test dataset:</p>
-<pre class="r"><code>predictedCoefficientOfDetermination &lt;- function(model, testData, respondingVariable) {
+<pre class="r"><code>predictedCoefficientOfDetermination &lt;- function(model, testData, trainVariable, testVariable) {
   prediction &lt;- predict(model, testData)
-  ssRes &lt;- sum((respondingVariable - prediction)^2)
-  ssTot &lt;- sum((respondingVariable - mean(respondingVariable))^2)
+  ssRes &lt;- sum((testVariable - prediction)^2)
+  ssTot &lt;- sum((testVariable - mean(trainVariable))^2)
   return (1 - (ssRes/ssTot))
 }</code></pre>
 <p>Now we can use the newly minted function to determine how well our model does on the test data:</p>
-<pre class="r"><code>predictedCoefficientOfDetermination(modelAIC, climateTest, climateTest$Temp)</code></pre>
+<pre class="r"><code>predictedCoefficientOfDetermination(modelAIC, climateTest, climateTrain$Temp, climateTest$Temp)</code></pre>
 <pre><code>## [1] 0.282211</code></pre>
 </div>
 
