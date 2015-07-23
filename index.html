@@ -77,6 +77,14 @@ img {
 <li><a href="http://nbviewer.ipython.org/urls/gist.githubusercontent.com/anonymous/559791fe88b87689e295/raw/f23f1c8bf7b3f23732722696cf2c7ffc6327d649/sample-kaggle.ipynb">Sample data analysis in python</a></li>
 </ul>
 </div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>This is the example dataset from the Kaggle page.</p>
+<ul>
+<li><a href="data/bagel_trainset.csv">Training</a></li>
+<li><a href="data/bagel_testset.csv">Test</a></li>
+</ul>
+</div>
 <div id="example-r-data-analysis-pipeline" class="section level1">
 <h1>Example R data analysis pipeline</h1>
 <p>This is a short description of the usual steps in a data analysis workflow. We will be focusing on the <code>caret</code> package in the tutorial. <code>caret</code> attempts to create a uniform interface for the common classification/regression tasks, and has a few dependencies. So take your time to download it.</p>
@@ -132,32 +140,32 @@ names(trainSet)</code></pre>
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold, repeated 1 times) 
-## Summary of sample sizes: 900, 900, 900, 900, 900, 900, ... 
+## Summary of sample sizes: 901, 900, 900, 900, 900, 899, ... 
 ## Resampling results across tuning parameters:
 ## 
-##   k  Accuracy  Kappa      Accuracy SD  Kappa SD  
-##   5  0.798     0.2558551  0.03011091   0.10698217
-##   7  0.811     0.2804074  0.02078995   0.08368307
-##   9  0.808     0.2463812  0.01229273   0.07130266
+##   k  Accuracy   Kappa      Accuracy SD  Kappa SD  
+##   5  0.7700502  0.2238907  0.02381272   0.08756637
+##   7  0.7760104  0.2063632  0.02098674   0.08619713
+##   9  0.7750603  0.1805666  0.02290630   0.09399419
 ## 
 ## Accuracy was used to select the optimal model using  the largest value.
 ## The final value used for the model was k = 7.</code></pre>
 <pre class="r"><code>fit1$results</code></pre>
-<pre><code>##   k Accuracy     Kappa AccuracySD    KappaSD
-## 1 5    0.798 0.2558551 0.03011091 0.10698217
-## 2 7    0.811 0.2804074 0.02078995 0.08368307
-## 3 9    0.808 0.2463812 0.01229273 0.07130266</code></pre>
+<pre><code>##   k  Accuracy     Kappa AccuracySD    KappaSD
+## 1 5 0.7700502 0.2238907 0.02381272 0.08756637
+## 2 7 0.7760104 0.2063632 0.02098674 0.08619713
+## 3 9 0.7750603 0.1805666 0.02290630 0.09399419</code></pre>
 <p>We can use <code>fit1</code> as a model to fit the data:</p>
 <pre class="r"><code>prediction &lt;- predict(fit1, trainSet)
 confusionMatrix &lt;- table(prediction, trainSet$Class)
 confusionMatrix</code></pre>
 <pre><code>##           
 ## prediction     A     B
-##          A  1656   830
-##          B  6185 23890</code></pre>
+##          A  1784  1260
+##          B  6057 23460</code></pre>
 <pre class="r"><code>accuracy &lt;- sum(diag(confusionMatrix))/sum(confusionMatrix)
 accuracy</code></pre>
-<pre><code>## [1] 0.7845582</code></pre>
+<pre><code>## [1] 0.7752833</code></pre>
 </div>
 <div id="next-steps" class="section level1">
 <h1>Next steps</h1>
