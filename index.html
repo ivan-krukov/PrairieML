@@ -70,7 +70,7 @@ img {
 <ul>
 <li><a href="notes/ml101.pdf">Introduction</a></li>
 <li><a href="notes/linear-regression.html">Linear regression</a></li>
-<li><a href="notes/LR.pdf">Linear regression theory</a></li>
+<li><a href="notes/LR.pdf">Logistic regression theory</a></li>
 <li><a href="notes/logistic.html">Logistic regression</a></li>
 <li><a href="notes/trees.html">Decision trees</a></li>
 <li><a href="notes/Fundamentals.pdf">Back to fundamentals</a></li>
@@ -140,32 +140,32 @@ names(trainSet)</code></pre>
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold, repeated 1 times) 
-## Summary of sample sizes: 901, 900, 900, 900, 900, 899, ... 
+## Summary of sample sizes: 900, 900, 900, 900, 900, 899, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   k  Accuracy   Kappa      Accuracy SD  Kappa SD  
-##   5  0.7700502  0.2238907  0.02381272   0.08756637
-##   7  0.7760104  0.2063632  0.02098674   0.08619713
-##   9  0.7750603  0.1805666  0.02290630   0.09399419
+##   5  0.7620459  0.2462248  0.03526723   0.10329628
+##   7  0.7740360  0.2614951  0.03074429   0.09467039
+##   9  0.7850459  0.2728005  0.02226827   0.07522567
 ## 
 ## Accuracy was used to select the optimal model using  the largest value.
-## The final value used for the model was k = 7.</code></pre>
+## The final value used for the model was k = 9.</code></pre>
 <pre class="r"><code>fit1$results</code></pre>
 <pre><code>##   k  Accuracy     Kappa AccuracySD    KappaSD
-## 1 5 0.7700502 0.2238907 0.02381272 0.08756637
-## 2 7 0.7760104 0.2063632 0.02098674 0.08619713
-## 3 9 0.7750603 0.1805666 0.02290630 0.09399419</code></pre>
+## 1 5 0.7620459 0.2462248 0.03526723 0.10329628
+## 2 7 0.7740360 0.2614951 0.03074429 0.09467039
+## 3 9 0.7850459 0.2728005 0.02226827 0.07522567</code></pre>
 <p>We can use <code>fit1</code> as a model to fit the data:</p>
 <pre class="r"><code>prediction &lt;- predict(fit1, trainSet)
 confusionMatrix &lt;- table(prediction, trainSet$Class)
 confusionMatrix</code></pre>
 <pre><code>##           
 ## prediction     A     B
-##          A  1784  1260
-##          B  6057 23460</code></pre>
+##          A  1759   607
+##          B  6082 24113</code></pre>
 <pre class="r"><code>accuracy &lt;- sum(diag(confusionMatrix))/sum(confusionMatrix)
 accuracy</code></pre>
-<pre><code>## [1] 0.7752833</code></pre>
+<pre><code>## [1] 0.7945702</code></pre>
 </div>
 <div id="next-steps" class="section level1">
 <h1>Next steps</h1>
