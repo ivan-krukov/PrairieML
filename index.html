@@ -74,6 +74,7 @@ img {
 <li><a href="notes/logistic.html">Logistic regression</a></li>
 <li><a href="notes/trees.html">Decision trees</a></li>
 <li><a href="notes/Fundamentals.pdf">Back to fundamentals</a></li>
+<li><a href="http://nbviewer.ipython.org/urls/gist.githubusercontent.com/anonymous/559791fe88b87689e295/raw/f23f1c8bf7b3f23732722696cf2c7ffc6327d649/sample-kaggle.ipynb">Sample data analysis in python</a></li>
 </ul>
 </div>
 <div id="example-r-data-analysis-pipeline" class="section level1">
@@ -134,29 +135,29 @@ names(trainSet)</code></pre>
 ## Summary of sample sizes: 900, 900, 900, 900, 900, 900, ... 
 ## Resampling results across tuning parameters:
 ## 
-##   k  Accuracy   Kappa      Accuracy SD  Kappa SD  
-##   5  0.7770063  0.2288129  0.03679468   0.12509974
-##   7  0.7760158  0.1793919  0.02487587   0.09319409
-##   9  0.7919861  0.2201392  0.02582638   0.09389551
+##   k  Accuracy  Kappa      Accuracy SD  Kappa SD  
+##   5  0.798     0.2558551  0.03011091   0.10698217
+##   7  0.811     0.2804074  0.02078995   0.08368307
+##   9  0.808     0.2463812  0.01229273   0.07130266
 ## 
 ## Accuracy was used to select the optimal model using  the largest value.
-## The final value used for the model was k = 9.</code></pre>
+## The final value used for the model was k = 7.</code></pre>
 <pre class="r"><code>fit1$results</code></pre>
-<pre><code>##   k  Accuracy     Kappa AccuracySD    KappaSD
-## 1 5 0.7770063 0.2288129 0.03679468 0.12509974
-## 2 7 0.7760158 0.1793919 0.02487587 0.09319409
-## 3 9 0.7919861 0.2201392 0.02582638 0.09389551</code></pre>
+<pre><code>##   k Accuracy     Kappa AccuracySD    KappaSD
+## 1 5    0.798 0.2558551 0.03011091 0.10698217
+## 2 7    0.811 0.2804074 0.02078995 0.08368307
+## 3 9    0.808 0.2463812 0.01229273 0.07130266</code></pre>
 <p>We can use <code>fit1</code> as a model to fit the data:</p>
 <pre class="r"><code>prediction &lt;- predict(fit1, trainSet)
 confusionMatrix &lt;- table(prediction, trainSet$Class)
 confusionMatrix</code></pre>
 <pre><code>##           
 ## prediction     A     B
-##          A  1544   332
-##          B  6297 24388</code></pre>
+##          A  1656   830
+##          B  6185 23890</code></pre>
 <pre class="r"><code>accuracy &lt;- sum(diag(confusionMatrix))/sum(confusionMatrix)
 accuracy</code></pre>
-<pre><code>## [1] 0.7964129</code></pre>
+<pre><code>## [1] 0.7845582</code></pre>
 </div>
 <div id="next-steps" class="section level1">
 <h1>Next steps</h1>
